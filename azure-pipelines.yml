@@ -8,8 +8,6 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-strategy:
-  PYTHON_VERSION: '3.7'
 
 steps:
 - task: UsePythonVersion@0
