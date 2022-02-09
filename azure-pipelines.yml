@@ -6,8 +6,15 @@
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
+variables:
+  # Web app name
+  webAppName: 'djangopipe'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+  # Environment name
+  environmentName: 'djangopipe'
 
 steps:
 - task: UsePythonVersion@0
