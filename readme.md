@@ -1,2 +1,2 @@
-# status badge markdown
+# Azure Deployemt Status
 [![Build Status](https://dev.azure.com/DigitalentsLearn/gleblearning/_apis/build/status/qlep.weatherbot?branchName=master)](https://dev.azure.com/DigitalentsLearn/gleblearning/_build/latest?definitionId=46&branchName=master)
