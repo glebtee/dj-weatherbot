@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-g=n@x#3$)inv!^lr3j!hi24x_g(p^=xfza43l=3!#e4$#2d4@f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.azurewebsites.net/fetch', '.azurewebsites.net']
+ALLOWED_HOSTS = ['weatherhel.azurewebsites.net']
 
 
 # Application definition
