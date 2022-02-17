@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import requests, json
 
-key = "ed71a4ff62e0d8b0edffad31710b4085"
+appid = "ed71a4ff62e0d8b0edffad31710b4085"
 
 def getWeather(units, city):
     city = city
     units = units
-    url = "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}".format(city, units, key)
+    url = "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}".format(city, units, appid)
 
     response = requests.get(url)
     data = json.loads(response.text)
