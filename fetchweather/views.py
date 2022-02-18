@@ -18,4 +18,4 @@ def index(request):
     weather = getWeather("metric", "Helsinki")
     city = weather["name"]
     temp = str(weather["main"]["temp"])
-    return HttpResponse("<h1>" + city + "</h1>" + "ilma: " + temp)
+    return HttpResponse("<h1>" + city + "</h1>" + "ilma njyttes: " + temp)
