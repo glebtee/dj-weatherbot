@@ -36,5 +36,5 @@ jobs:
     - name: Test with pytest
       run: |
         pwd
-        print("o'cruel world!!1")
+        echo "o'cruel world!!1"
         pytest
