@@ -1,0 +1,15 @@
+{
+    "listeners":{
+        "*:80":{
+            "pass":"applications/weatherbot"
+        }
+    },
+    "applications": {
+        "weatherbot":{
+            "type":"python 3",
+            "path": "/app",
+            "home":"/opt/venv",
+            "module":"weatherbot.wsgi"
+        }
+    }
+}
