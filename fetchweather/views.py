@@ -16,7 +16,6 @@ def getWeather(units, city):
 
     return data
 
-@require_GET
 def index(request):
     weather = getWeather("metric", "Helsinki")
     city = weather["name"]
