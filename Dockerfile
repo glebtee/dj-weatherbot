@@ -1,4 +1,4 @@
-#stage to build and isntall packages
+#stage to build and install packages
 FROM python:3.9 as build-python
 
 #installing pyth dependencies
