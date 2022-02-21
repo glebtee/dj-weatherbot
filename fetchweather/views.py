@@ -30,8 +30,14 @@ def bot(request):
     jsondata = request.body
 
     data = json.loads(jsondata)
+
     print(data)
 
     messageText = data['message']['text']
+    chatID = data['message']['chat']['id']
+
+    url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatID + '&parse_mode=HTML&text=' + messageText
+    m = requests.post(url)
+    print(m)
 
     return HttpResponse("200" + messageText)
