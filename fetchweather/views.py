@@ -16,11 +16,11 @@ def getWeather(units, city):
 
     return data
 
-def index(request):
-    weather = getWeather("metric", "Helsinki")
-    city = weather["name"]
-    temp = str(weather["main"]["temp"])
-    return HttpResponse("<h1>" + city + "</h1>" + "ilma njyttes: " + temp)
+#def index(request):
+#    weather = getWeather("metric", "Helsinki")
+#    city = weather["name"]
+#    temp = str(weather["main"]["temp"])
+#    return HttpResponse("<h1>" + city + "</h1>" + "ilma njyttes: " + temp)
 
 @require_POST
 def some_endpoit(request):
