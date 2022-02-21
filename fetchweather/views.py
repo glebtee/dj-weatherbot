@@ -22,6 +22,7 @@ def index(request):
     temp = str(weather["main"]["temp"])
     return HttpResponse("<h1>" + city + "</h1>" + "ilma njyttes: " + temp)
 
+@csrf_exempt
 @require_POST
 def telebot_endpoint(request):
     jsondata = request.body
@@ -29,3 +30,12 @@ def telebot_endpoint(request):
 
     print(data)
     return HttpResponse(status=200)
+
+@csrf_exempt
+@require_POST
+def some_endpoit(request):
+    jsondata = request.body
+    data = json.loads(jsondata)
+
+    print(data)
+    return HttpResponse(data)
