@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('fetch/', include('fetchweather.urls')),
+    path('/', include('fetchweather.urls')),
     path('admin/', admin.site.urls),
 ]
