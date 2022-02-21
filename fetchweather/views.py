@@ -30,4 +30,4 @@ def index(request):
 
     print(data)
 
-    return HttpResponse("<h1>Yu post</h1>" + data)
+    return HttpResponse("<h1>Yu post</h1>" + data["message"])
