@@ -23,9 +23,11 @@ def getWeather(units, city):
 #    return HttpResponse("<h1>" + city + "</h1>" + "ilma njyttes: " + temp)
 
 @require_POST
-def some_endpoit(request):
+def index(request):
     jsondata = request.body
+
     data = json.loads(jsondata)
 
     print(data)
+
     return HttpResponse("<h1>Yu post</h1>" + data)
