@@ -28,4 +28,4 @@ def some_endpoit(request):
     data = json.loads(jsondata)
 
     print(data)
-    return HttpResponse(data)
+    return HttpResponse("<h1>Yu post</h1>" + data)
