@@ -8,6 +8,8 @@ appid = "ed71a4ff62e0d8b0edffad31710b4085"
 botid = "382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA"
 message = ""
 chatID = ""
+city = ""
+temp = 0
 
 def getWeather(units, city):
     city = city
@@ -33,11 +35,11 @@ def bot(request):
 
     print(data)
 
-    messageText = data['message']['text']
+    messageText = "Temp in " + city + "is " + str(temp)
     chatID = str(data['message']['chat']['id'])
 
     url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatID + '&parse_mode=HTML&text=' + messageText
     m = requests.post(url)
     print(m)
 
-    return HttpResponse("200" + messageText)
+    return HttpResponse(status=200)
