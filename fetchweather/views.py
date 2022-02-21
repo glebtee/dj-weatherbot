@@ -32,7 +32,6 @@ def bot(request):
     data = json.loads(jsondata)
     print(data)
 
-    message = data['message']
-    chatID = message['chat']
+    messageText = data['message']['text']
 
-    return HttpResponse("200", "all is cool")
+    return HttpResponse("200" + messageText)
