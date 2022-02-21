@@ -34,7 +34,7 @@ def bot(request):
     print(data)
 
     messageText = data['message']['text']
-    chatID = data['message']['chat']['id']
+    chatID = str(data['message']['chat']['id'])
 
     url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatID + '&parse_mode=HTML&text=' + messageText
     m = requests.post(url)
