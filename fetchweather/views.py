@@ -30,7 +30,9 @@ def bot(request):
     jsondata = request.body
 
     data = json.loads(jsondata)
+    print(data)
+
     message = data['message']
     chatID = message['chat']
 
-    return HttpResponse(chatID + ' ' + message)
+    return HttpResponse("200", "all is cool")
