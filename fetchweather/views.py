@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests, json
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 appid = "ed71a4ff62e0d8b0edffad31710b4085"
 
@@ -19,3 +21,12 @@ def index(request):
     city = weather["name"]
     temp = str(weather["main"]["temp"])
     return HttpResponse("<h1>" + city + "</h1>" + "ilma njyttes: " + temp)
+
+@csrf_exempt
+@require_POST
+def telebot_endpoint(request):
+    jsondata = request.body
+    data = json.loads(jsondata)
+
+    print(data)
+    return HttpResponse(status=200)
