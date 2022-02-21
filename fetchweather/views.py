@@ -28,6 +28,4 @@ def index(request):
 
     data = json.loads(jsondata)
 
-    print(data)
-
-    return HttpResponse("<h1>Yu post</h1>" + data["message"])
+    return HttpResponse(data)
