@@ -26,7 +26,6 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-          pwd
       
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -61,4 +60,4 @@ jobs:
         with:
           app-name: 'weatherboat'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F191716C4B8D4030B54BC8F469259415 }}
