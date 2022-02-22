@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Django app container to Azure App Service Container - unit-weather
+name: Build and deploy Django app container to Azure App Service Container
 
 on:
   push:
@@ -16,6 +16,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: boatregistry.azurecr.io
+        username: 'boatregistry'
+        password: ${{ secrets.BOATREGISTRY }}
+
     - run: |
         docker build . -t boatregistry.azurecr.io/unit-weather:latest
         docker push boatregistry.azurecr.io/unit-weather:latest
