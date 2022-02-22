@@ -18,6 +18,4 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED 1
 ENV PATH="/opt/venv/bin:$PATH"
-
-ENV WEBSITE_WEBDEPLOY_USE_SCM="true"
 COPY config.json /docker-entrypoint.d
