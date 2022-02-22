@@ -36,11 +36,11 @@ def bot(request):
 
     print(data)
 
-    messageText = "Temp in " + city + "is " + str(temp)
-    chatID = str(data['message']['chat']['id'])
-
     weather = getWeather("metric", "Helsinki")
     print(weather)
+
+    messageText = "Temp in " + city + "is " + str(temp)
+    chatID = str(data['message']['chat']['id'])
 
     city = weather["name"]
     temp = str(weather["main"]["temp"])
