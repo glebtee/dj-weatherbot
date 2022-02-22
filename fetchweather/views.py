@@ -28,7 +28,6 @@ def index(request):
 @require_POST
 def bot(request):
     jsondata = request.body
-
     data = json.loads(jsondata)
 
     print(data)
@@ -37,6 +36,8 @@ def bot(request):
     chatID = str(data['message']['chat']['id'])
 
     weather = getWeather("metric", "Helsinki")
+    print(weather)
+
     city = weather["name"]
     temp = str(weather["main"]["temp"])
 
