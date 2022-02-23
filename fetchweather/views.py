@@ -27,7 +27,7 @@ def index(request):
     city = weather["name"]
     temp = str(weather["main"]["temp"])
 
-    return HttpResponse("<h1>" + city + "</h1>" + "ilma njyttes: " + temp)
+    return HttpResponse("<h1>" + city + "</h1>" + "ilma nyt: " + temp)
 
 @require_POST
 def bot(request):
