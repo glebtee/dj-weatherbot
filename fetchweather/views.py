@@ -42,7 +42,7 @@ def bot(request):
     city = weather["name"]
     temp = str(weather["main"]["temp"])
 
-    messageText = "Temp in " + city + "is " + str(temp)
+    messageText = "Temp in " + city + "is ... " + str(temp)
     chatID = str(data['message']['chat']['id'])
 
     url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatID + '&parse_mode=HTML&text=' + messageText
