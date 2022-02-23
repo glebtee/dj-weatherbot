@@ -20,7 +20,7 @@ jobs:
     - uses: azure/docker-login@v1
       with:
         login-server: boatregistry.azurecr.io
-        username: 'boatregistry'
+        username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.BOATREGISTRY }}
 
     - run: |
