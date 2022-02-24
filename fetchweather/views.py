@@ -15,7 +15,9 @@ temp = ""
 def botMessage(chatid, message):
     url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatid + '&parse_mode=HTML&text=' + message
     m = requests.post(url)
-    print(m)
+
+    print("globalchatID = " + str(chatid))
+    print(m.body)
 
 
 def getWeather(units, city):
