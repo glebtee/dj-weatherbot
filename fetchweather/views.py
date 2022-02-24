@@ -46,13 +46,14 @@ def botWeatherMessage(chatid, city):
 
 # index webpage
 def index(request):
-    weather = getWeather("metric", "Helsinki")
 
-    city = weather["name"]
+    city = "Helsinki"
+    weather = getWeather("metric", "Helsinki")
     temp = str(weather["main"]["temp"])
     message = "page refreshed"
     
     botMessage(chatid="201222234", message=message)
+    botWeatherMessage(chatid, city)
 
     return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
 
@@ -63,8 +64,9 @@ def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
     chatid = str(data['message']['chat']['id'])
+
     print(data)
-    
+
     botWeatherMessage(chatid, city)
 
     return HttpResponse(status=200)
