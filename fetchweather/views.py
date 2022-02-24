@@ -8,7 +8,7 @@ appid = "ed71a4ff62e0d8b0edffad31710b4085"
 botid = "382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA"
 
 message = ""
-chatid = ""
+globalChatID = ""
 city = ""
 temp = ""
 
@@ -35,7 +35,7 @@ def index(request):
 
     message = "page refreshed"
     
-    botMessage(chatid, message)
+    botMessage(globalChatID, message)
 
     return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
 
@@ -54,6 +54,7 @@ def bot(request):
 
     message = "Temp in " + city + " is ... " + str(temp)
     chatid = str(data['message']['chat']['id'])
+    globalChatID = chatid
     
     botMessage(chatid, message)
 
