@@ -17,7 +17,7 @@ def botMessage(chatid, message):
     m = requests.post(url)
 
     print("globalchatID = " + str(chatid))
-    print(m.body)
+    print(m.content)
 
 
 def getWeather(units, city):
