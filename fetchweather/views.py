@@ -8,7 +8,7 @@ appid = "ed71a4ff62e0d8b0edffad31710b4085"
 botid = "382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA"
 
 message = ""
-chatID = ""
+chatid = ""
 city = ""
 temp = ""
 
@@ -32,6 +32,10 @@ def index(request):
     weather = getWeather("metric", "Helsinki")
     city = weather["name"]
     temp = str(weather["main"]["temp"])
+
+    message = "page refreshed"
+    
+    botMessage(chatid, message)
 
     return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
 
