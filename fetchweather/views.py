@@ -50,7 +50,7 @@ def index(request):
 
     message = "page refreshed"
     
-    botMessage(chatid=201222234, message=message)
+    botMessage(chatid="201222234", message=message)
 
     return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
 
