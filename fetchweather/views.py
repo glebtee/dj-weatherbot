@@ -19,7 +19,6 @@ def botMessage(chatid, message):
     print("globalchatID = " + str(chatid))
     print(m.content)
 
-
 def getWeather(units, city):
     city = city
     units = units
@@ -29,6 +28,16 @@ def getWeather(units, city):
     data = json.loads(response.text)
 
     return data
+
+def botWeatherMessage(chatid, city):
+    weather = getWeather("metric", "Helsinki")
+    city = city
+    temp = str(weather["main"]["temp"])
+
+    message = "Temp in " + city + " is ... " + str(temp)
+    chatid = chatid
+    
+    botMessage(chatid, message)
 
 def index(request):
     weather = getWeather("metric", "Helsinki")
@@ -43,21 +52,16 @@ def index(request):
 
 @require_POST
 def bot(request):
+    city = "Helsinki"
     jsondata = request.body
     data = json.loads(jsondata)
 
     print(data)
-
-    weather = getWeather("metric", "Helsinki")
-    print(weather)
-
-    city = weather["name"]
-    temp = str(weather["main"]["temp"])
-
-    message = "Temp in " + city + " is ... " + str(temp)
-    chatid = str(data['message']['chat']['id'])
-    globalChatID = chatid
     
-    botMessage(chatid, message)
+    chatid = str(data['message']['chat']['id'])
+    weather = getWeather("metric", city)
+    print(weather)
+    
+    botWeatherMessage(chatid, city)
 
     return HttpResponse(status=200)
