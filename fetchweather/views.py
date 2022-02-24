@@ -29,12 +29,14 @@ def getWeather(units, city):
     response = requests.get(url)
     data = json.loads(response.text)
 
+    print(data)
+
     return data
 
 # send telegram a weather update
 def botWeatherMessage(chatid, city):
-    weather = getWeather("metric", "Helsinki")
     city = city
+    weather = getWeather("metric", city)
     temp = str(weather["main"]["temp"])
 
     message = "Temp in " + city + " is ... " + str(temp)
@@ -45,9 +47,9 @@ def botWeatherMessage(chatid, city):
 # index webpage
 def index(request):
     weather = getWeather("metric", "Helsinki")
+
     city = weather["name"]
     temp = str(weather["main"]["temp"])
-
     message = "page refreshed"
     
     botMessage(chatid="201222234", message=message)
@@ -60,12 +62,8 @@ def bot(request):
     city = "Helsinki"
     jsondata = request.body
     data = json.loads(jsondata)
-
-    print(data)
-
     chatid = str(data['message']['chat']['id'])
-    weather = getWeather("metric", city)
-    print(weather)
+    print(data)
     
     botWeatherMessage(chatid, city)
 
