@@ -8,10 +8,11 @@ appid = "ed71a4ff62e0d8b0edffad31710b4085"
 botid = "382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA"
 
 message = ""
-globalChatID = ""
+chatid = ""
 city = ""
 temp = ""
 
+# send bot message
 def botMessage(chatid, message):
     url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatid + '&parse_mode=HTML&text=' + message
     m = requests.post(url)
@@ -19,6 +20,7 @@ def botMessage(chatid, message):
     print("globalchatID = " + str(chatid))
     print(m.content)
 
+# ask for weather update
 def getWeather(units, city):
     city = city
     units = units
@@ -29,6 +31,7 @@ def getWeather(units, city):
 
     return data
 
+# send telegram a weather update
 def botWeatherMessage(chatid, city):
     weather = getWeather("metric", "Helsinki")
     city = city
@@ -39,6 +42,7 @@ def botWeatherMessage(chatid, city):
     
     botMessage(chatid, message)
 
+# index webpage
 def index(request):
     weather = getWeather("metric", "Helsinki")
     city = weather["name"]
@@ -46,10 +50,11 @@ def index(request):
 
     message = "page refreshed"
     
-    botMessage(globalChatID, message)
+    botMessage(chatid=chatid, message=message)
 
     return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
 
+# tele webhook
 @require_POST
 def bot(request):
     city = "Helsinki"
@@ -57,7 +62,7 @@ def bot(request):
     data = json.loads(jsondata)
 
     print(data)
-    
+
     chatid = str(data['message']['chat']['id'])
     weather = getWeather("metric", city)
     print(weather)
