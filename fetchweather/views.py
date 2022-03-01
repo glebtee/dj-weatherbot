@@ -4,7 +4,7 @@ import requests, json
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 
-appid = "ed71a4ff62e0d8b0edffad31710b4085"
+weatherappid = "ed71a4ff62e0d8b0edffad31710b4085"
 botid = "382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA"
 
 message = ""
@@ -13,7 +13,7 @@ city = ""
 temp = ""
 
 # send bot message
-def botMessage(chatid, message):
+def sendBotMessage(chatid, message):
     url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatid + '&parse_mode=HTML&text=' + message
     m = requests.post(url)
 
@@ -24,7 +24,7 @@ def botMessage(chatid, message):
 def getWeather(units, city):
     city = city
     units = units
-    url = "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}".format(city, units, appid)
+    url = "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}".format(city, units, weatherappid)
 
     response = requests.get(url)
     data = json.loads(response.text)
@@ -34,7 +34,7 @@ def getWeather(units, city):
     return data
 
 # send telegram a weather update
-def botWeatherMessage(chatid, city):
+def sendWeatherBotMessage(chatid, city):
     city = city
     weather = getWeather("metric", city)
     temp = str(weather["main"]["temp"])
@@ -42,35 +42,34 @@ def botWeatherMessage(chatid, city):
     message = "Temp in " + city + " is ... " + str(temp)
     chatid = chatid
     
-    botMessage(chatid, message)
+    sendBotMessage(chatid, message)
 
 # index webpage
 def index(request):
-
     city = "Helsinki"
     weather = getWeather("metric", "Helsinki")
     temp = str(weather["main"]["temp"])
     message = "page refreshed"
     chatid = "201222234"
     
-    botMessage(chatid, message)
-    botWeatherMessage(chatid, city)
+    sendBotMessage(chatid, message)
+    sendWeatherBotMessage(chatid, city)
 
     return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
 
-# tele webhook
+# tele webhook happens here
 @require_POST
 def bot(request):
-    city = "Helsinki"
     jsondata = request.body
     data = json.loads(jsondata)
     
     print(data)
 
     chatid = str(data['message']['chat']['id'])
+    city = "Helsinki"
 
-    #need check for is_bot parameter
+    #need check for is_bot parameter?
 
-    botWeatherMessage(chatid, city)
+    sendWeatherBotMessage(chatid, city)
 
     return HttpResponse(status=200)
