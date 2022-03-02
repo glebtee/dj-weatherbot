@@ -1,2 +1,5 @@
 # Azure Deployment Status
-[![Build Status](https://dev.azure.com/DigitalentsLearn/gleblearning/_apis/build/status/qlep.weatherbot?branchName=master)](https://dev.azure.com/DigitalentsLearn/gleblearning/_build/latest?definitionId=46&branchName=master)
+
+[![Try building different Py versions](https://github.com/qlep/weatherbot/actions/workflows/pytestworkflow.yml/badge.svg)](https://github.com/qlep/weatherbot/actions/workflows/pytestworkflow.yml)
+[![Build and deploy Django app container to Azure App Service Container](https://github.com/qlep/weatherbot/actions/workflows/container_weatherboat.yml/badge.svg)](https://github.com/qlep/weatherbot/actions/workflows/container_weatherboat.yml)
+[![Build and deploy Python app to Azure Web App - weatherboat](https://github.com/qlep/weatherbot/actions/workflows/master_weatherboat.yml/badge.svg)](https://github.com/qlep/weatherbot/actions/workflows/master_weatherboat.yml)
