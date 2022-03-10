@@ -41,7 +41,6 @@ def sendWeatherBotMessage(chatid, city):
 
     message = "Temp in " + city + " is ... " + str(temp)
     chatid = chatid
-    
     sendBotMessage(chatid, message)
 
 # index webpage
@@ -64,5 +63,5 @@ def bot(request):
     data = json.loads(jsondata)
     
     print(data)
-    
+
     return HttpResponse(status=200)
