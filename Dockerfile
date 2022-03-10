@@ -18,5 +18,5 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED 1
 ENV PATH="/opt/venv/bin:$PATH"
-RUN curl -X PUT --data-binary @bundle.pem --unix-socket /path/to/control.unit.sock http://localhost/certificates/bundle
 COPY config.json /docker-entrypoint.d
+RUN curl -X PUT --data-binary @bundle.pem --unix-socket /path/to/control.unit.sock http://localhost/certificates/bundle
