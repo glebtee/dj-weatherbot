@@ -64,12 +64,4 @@ def bot(request):
     data = json.loads(jsondata)
     
     print(data)
-
-    chatid = str(data['message']['chat']['id'])
-    city = "Helsinki"
-
-    #need check for is_bot parameter?
-
-    sendWeatherBotMessage(chatid, city)
-
     return HttpResponse(status=200)
