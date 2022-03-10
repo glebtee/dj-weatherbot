@@ -1,9 +1,19 @@
 {
+    "certificates": {
+        "bundle": {
+            "key": "bundle"
+        }
+    },
+
     "listeners":{
         "*:80":{
             "pass":"applications/weatherbot"
+        },
+        "*:442":{
+            "pass":"applications/weatherbot"
         }
     },
+
     "applications": {
         "weatherbot":{
             "type":"python 3",
