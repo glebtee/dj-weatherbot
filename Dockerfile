@@ -19,3 +19,4 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED 1
 ENV PATH="/opt/venv/bin:$PATH"
 COPY config.json /docker-entrypoint.d
+COPY bundle.pem /docker-entrypoint.d
