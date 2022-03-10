@@ -1,5 +1,8 @@
 {
     "listeners":{
+        "*:80":{
+            "pass":"applications/weatherbot"
+        },
         "*:443":{
             "pass":"applications/weatherbot",
             "tls":{
