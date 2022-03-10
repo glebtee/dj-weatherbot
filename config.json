@@ -3,7 +3,7 @@
         "*:80":{
             "pass":"applications/weatherbot"
         },
-        "*:442":{
+        "*:443":{
             "pass":"applications/weatherbot",
             "tls":{
                 "certificate": "bundle"
