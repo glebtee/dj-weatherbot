@@ -6,7 +6,7 @@
         "*:443":{
             "pass":"applications/weatherbot",
             "tls":{
-                "certificate": "bundle"
+                "certificate": "bundle.pem"
             }
         }
     },
