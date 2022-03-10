@@ -64,4 +64,5 @@ def bot(request):
     data = json.loads(jsondata)
     
     print(data)
+    
     return HttpResponse(status=200)
