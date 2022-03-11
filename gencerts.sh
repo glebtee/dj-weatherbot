@@ -14,7 +14,7 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 #open ssl configuration scripts
-openssl req -newkey rsa:2048 -sha256 -nodes -keyout privkey.key -x509 -days 365 -out pubcert.pem -subj "/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=20.223.203.100"
+openssl req -newkey rsa:2048 -sha256 -nodes -keyout priv.key -x509 -days 365 -out pub.pem -subj "/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=20.223.203.100"
 
 curl -F "url=" https://api.telegram.org/bot382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA/setWebhook
 
