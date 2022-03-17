@@ -18,5 +18,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       id: deploy-to-webapp
       with:
-        app-name: 'teleweater'
+        app-name: 'teleweather'
         publish-profile: ${{ secrets.TELEBOT_IN_AZURE }}
