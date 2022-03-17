@@ -2,3 +2,4 @@ __pycache__
 .vscode
 .deployment
 azure-pipelines.yml
+gencerts.sh
