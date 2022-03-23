@@ -16,7 +16,8 @@
             'username': 'glepp', 
             'type': 'private'
         }, 
-        'date': 1645623440, 'text': 'Jey'
+        'date': 1645623440, 
+        'text': 'Jey'
     }
 }
 

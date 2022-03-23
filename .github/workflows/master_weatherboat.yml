@@ -2,6 +2,8 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
+# REMEMBER set SCM_DO_BUILD_DURING_DEPLOYMENT=true in AZ
+
 name: Build and deploy Python app to Azure Web App - weatherboat
 
 on:
@@ -14,11 +16,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
+    - name: Checkout app code
     - uses: actions/checkout@v2
-    
+
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       id: deploy-to-webapp
       with:
         app-name: 'teleweather'
-        publish-profile: ${{ secrets.TELEBOT_IN_AZURE }}
+        publish-profile: ${{ secrets.GLEBOT_AZURE }}

@@ -1,3 +1,4 @@
+from itertools import chain
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests, json
@@ -33,26 +34,11 @@ def getWeather(units, city):
 
     return data
 
-# send telegram a weather update
-def sendWeatherBotMessage(chatid, city):
-    city = city
-    weather = getWeather("metric", city)
-    temp = str(weather["main"]["temp"])
-
-    message = "Temp in " + city + " is ... " + str(temp)
-    chatid = chatid
-    sendBotMessage(chatid, message)
-
 # index webpage
 def index(request):
     city = "Helsinki"
     weather = getWeather("metric", "Helsinki")
     temp = str(weather["main"]["temp"])
-    message = "page refreshed"
-    chatid = "201222234"
-    
-    sendBotMessage(chatid, message)
-    sendWeatherBotMessage(chatid, city)
 
     return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
 
@@ -63,5 +49,10 @@ def bot(request):
     data = json.loads(jsondata)
     
     print(data)
+
+    chatid = data['chat']['id']
+    message = data['message']['text']
+
+    sendBotMessage(chatid, message)
 
     return HttpResponse(status=200)
