@@ -23,5 +23,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       id: deploy-to-webapp
       with:
-        app-name: 'teleweather'
+        app-name: 'glebot'
         publish-profile: ${{ secrets.GLEBOT_AZURE }}
