@@ -40,8 +40,6 @@ def index(request):
     weather = getWeather("metric", "Helsinki")
     temp = str(weather["main"]["temp"])
 
-    print("yo")
-
     return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
 
 # tele webhook happens here
@@ -52,7 +50,7 @@ def bot(request):
     
     print(data)
 
-    chatid = data['message']['chat']['id']
+    chatid = int(data['message']['chat']['id'])
     message = data['message']['text']
 
     sendBotMessage(chatid, message)
