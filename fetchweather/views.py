@@ -15,10 +15,10 @@ temp = ""
 
 # send bot message
 def sendBotMessage(chatid, message):
-    url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatid + '&parse_mode=HTML&text=' + message
+    url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&parse_mode=HTML&text={}'.format(botid, chatid, message)
     m = requests.post(url)
 
-    print("globalchatID = {}".format(chatid))
+    print("globalchatID={}".format(chatid))
     print(m.content)
 
 # ask for weather update
@@ -40,7 +40,7 @@ def index(request):
     weather = getWeather("metric", "Helsinki")
     temp = str(weather["main"]["temp"])
 
-    return HttpResponse("<h1>" + city + "</h1>" + "ilma meillä nyt: " + temp)
+    return HttpResponse("<h1>{}</h1>" + "<p>ilma meillä nyt: {}</p>".format(city, temp))
 
 # tele webhook happens here
 @require_POST
