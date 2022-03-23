@@ -18,7 +18,7 @@ def sendBotMessage(chatid, message):
     url = 'https://api.telegram.org/bot' + botid + '/sendMessage?chat_id=' + chatid + '&parse_mode=HTML&text=' + message
     m = requests.post(url)
 
-    print("globalchatID = " + str(chatid))
+    print("globalchatID = {}".format(chatid))
     print(m.content)
 
 # ask for weather update
