@@ -52,7 +52,7 @@ def bot(request):
     
     print(data)
 
-    chatid = data['chat']['id']
+    chatid = data['message']['chat']['id']
     message = data['message']['text']
 
     sendBotMessage(chatid, message)
