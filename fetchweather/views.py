@@ -55,6 +55,13 @@ def bot(request):
 
         sendBotMessage(chatid, message)
     else:
-        print(data)
+        messageAFriend()
+        print("-------------->" + data)
 
     return HttpResponse(status=200)
+
+def messageAFriend():
+    chatid = -1001746453856
+    message = "zzk49 - хуесос"
+
+    sendBotMessage(chatid, message)
