@@ -47,17 +47,22 @@ def index(request):
 def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
+    catmess = 'https://api.thecatapi.com/v1/images/search'
     
     if 'message' in data:
         chatid = data['message']['chat']['id']
         message = data['message']['text']
+        catmess = 'https://api.thecatapi.com/v1/images/search'
 
         try:
             temp = getWeather('metric', message)['main']['temp']
             replymessage = 'Its {} degrees in {}'.format(temp, message)
             sendBotMessage(chatid, replymessage)
+
         except:
             sendBotMessage(chatid, "nope")
+            sendBotMessage(chatid, catmess)
+
     else:
         print("-------------->" + data)
 
