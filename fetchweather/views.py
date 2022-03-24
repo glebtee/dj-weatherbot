@@ -38,9 +38,10 @@ def getWeather(units, city):
 def index(request):
     city = "Helsinki"
     weather = getWeather("metric", "Helsinki")
-    temp = str(weather["main"]["temp"])
+    temp = weather["main"]["temp"]
+    responsestr = '<h1>{}</h1><p>ilma meillä nyt: {}</p>'.format(city, temp)
 
-    return HttpResponse("<h1>{}</h1>" + "<p>ilma meillä nyt: {}</p>".format(city, temp))
+    return HttpResponse(responsestr)
 
 # tele webhook happens here
 @require_POST
@@ -65,6 +66,6 @@ def messageForAFriend(chatid):
     
     sendBotMessage(chatid, message)
     
-    print("message send to a friend")
+    print("message sent to a friend")
 
     
