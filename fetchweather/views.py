@@ -56,3 +56,19 @@ def bot(request):
     sendBotMessage(chatid, message)
 
     return HttpResponse(status=200)
+
+
+def messageForAFriend():
+    chatid = -1001746453856
+    message = "zzk49_bot дает в жопу"
+    i = 0
+
+    while i <= 20:
+        sendBotMessage(chatid, message)
+        i += 1
+
+        if i == 20:
+            i == 0
+
+
+    
