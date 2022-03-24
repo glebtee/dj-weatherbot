@@ -61,7 +61,7 @@ def bot(request):
 
         except:
             sendBotMessage(chatid, "nope")
-            sendBotMessage(chatid, catmess)
+            sendBotMessage(chatid, catmess)[0]['url']
 
     else:
         print("-------------->" + data)
