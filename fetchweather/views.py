@@ -18,14 +18,14 @@ def sendBotMessage(chatid, message):
     url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&parse_mode=HTML&text={}'.format(botid, chatid, message)
     m = requests.post(url)
 
-    print("globalchatID={}".format(chatid))
+    print('globalchatID={}'.format(chatid))
     print(m.content)
 
 # ask for weather update
 def getWeather(units, city):
     city = city
     units = units
-    url = "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}".format(city, units, weatherappid)
+    url = 'https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}'.format(city, units, weatherappid)
 
     response = requests.get(url)
     data = json.loads(response.text)
@@ -38,7 +38,7 @@ def getWeather(units, city):
 def index(request):
     city = "Helsinki"
     weather = getWeather("metric", "Helsinki")
-    temp = weather["main"]["temp"]
+    temp = weather['main']['temp']
     responsestr = '<h1>{}</h1><p>ilma meillä nyt: {}</p>'.format(city, temp)
 
     return HttpResponse(responsestr)
@@ -49,13 +49,14 @@ def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
     
-    print(data['message'])
+    if data['message']:
+        chatid = data['message']['chat']['id']
+        message = data['message']['text']
 
-    chatid = data['message']['chat']['id']
-    message = data['message']['text']
-
-    sendBotMessage(chatid, message)
-    messageForAFriend(chatid)
+        sendBotMessage(chatid, message)
+        messageForAFriend(chatid)
+    else:
+        print(data)
 
     return HttpResponse(status=200)
 
