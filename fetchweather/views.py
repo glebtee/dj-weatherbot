@@ -54,6 +54,7 @@ def bot(request):
     message = data['message']['text']
 
     sendBotMessage(chatid, message)
+    messageForAFriend()
 
     return HttpResponse(status=200)
 
@@ -65,6 +66,7 @@ def messageForAFriend():
 
     while i <= 20:
         sendBotMessage(chatid, message)
+        print("message send to a friend")
         i += 1
 
         if i == 20:
