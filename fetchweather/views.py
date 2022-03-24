@@ -54,23 +54,17 @@ def bot(request):
     message = data['message']['text']
 
     sendBotMessage(chatid, message)
-    messageForAFriend()
+    messageForAFriend(chatid)
 
     return HttpResponse(status=200)
 
 
-def messageForAFriend():
-    chatid = -1001746453856
+def messageForAFriend(chatid):
+    chatid = chatid
     message = "zzk49_bot дает в жопу"
-    i = 0
-
-    while i <= 20:
-        sendBotMessage(chatid, message)
-        print("message send to a friend")
-        i += 1
-
-        if i == 20:
-            i == 0
-
+    
+    sendBotMessage(chatid, message)
+    
+    print("message send to a friend")
 
     
