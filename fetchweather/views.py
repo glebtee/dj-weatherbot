@@ -38,6 +38,8 @@ def getCat():
     response = requests.get(url)
     data = json.loads(response.text)
 
+    print(data)
+
     return data
 
 # index webpage
@@ -67,7 +69,7 @@ def bot(request):
         except:
             sendBotMessage(chatid, "nope")
             catdata = getCat()
-            sendBotMessage(chatid, catdata['url'])
+            sendBotMessage(chatid, catdata[2])
 
     else:
         print("-------------->" + data)
