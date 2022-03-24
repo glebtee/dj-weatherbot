@@ -33,6 +33,13 @@ def getWeather(units, city):
 
     return data
 
+def getCat():
+    url = 'https://api.thecatapi.com/v1/images/search'
+    response = requests.get(url)
+    data = json.loads(response.text)
+
+    return data
+
 # index webpage
 def index(request):
     city = "Helsinki"
@@ -47,7 +54,6 @@ def index(request):
 def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
-    catmess = 'https://api.thecatapi.com/v1/images/search'
     
     if 'message' in data:
         chatid = data['message']['chat']['id']
@@ -61,7 +67,9 @@ def bot(request):
 
         except:
             sendBotMessage(chatid, "nope")
-            sendBotMessage(chatid, catmess)[0]['url']
+            catdata = getCat()
+            
+            sendBotMessage(chatid, catdata['url'])
 
     else:
         print("-------------->" + data)
