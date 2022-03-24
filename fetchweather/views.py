@@ -52,16 +52,13 @@ def bot(request):
         chatid = data['message']['chat']['id']
         message = data['message']['text']
 
-        sendBotMessage(chatid, message)
-        messageAFriend()
+        try:
+            temp = getWeather('metric', message)['main']['temp']
+            replymessage = 'Its {} degrees in {}'.format(temp, message)
+            sendBotMessage(chatid, replymessage)
+        except:
+            sendBotMessage(chatid, "nope")
     else:
-        messageAFriend()
         print("-------------->" + data)
 
     return HttpResponse(status=200)
-
-def messageAFriend():
-    chatid = -1001746453856
-    message = "zzk49 - хуесос"
-
-    sendBotMessage(chatid, message)
