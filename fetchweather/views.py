@@ -48,9 +48,9 @@ def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
     
-    print(data)
+    print(data['message'])
 
-    chatid = str(data['message']['chat']['id'])
+    chatid = data['message']['chat']['id']
     message = data['message']['text']
 
     sendBotMessage(chatid, message)
