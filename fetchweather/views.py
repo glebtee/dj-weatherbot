@@ -58,7 +58,6 @@ def bot(request):
     if 'message' in data:
         chatid = data['message']['chat']['id']
         message = data['message']['text']
-        catmess = 'https://api.thecatapi.com/v1/images/search'
 
         try:
             temp = getWeather('metric', message)['main']['temp']
@@ -68,7 +67,6 @@ def bot(request):
         except:
             sendBotMessage(chatid, "nope")
             catdata = getCat()
-            
             sendBotMessage(chatid, catdata['url'])
 
     else:
