@@ -49,24 +49,12 @@ def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
     
-    if data['message']:
+    if 'message' in data:
         chatid = data['message']['chat']['id']
         message = data['message']['text']
 
         sendBotMessage(chatid, message)
-        messageForAFriend(chatid)
     else:
         print(data)
 
     return HttpResponse(status=200)
-
-
-def messageForAFriend(chatid):
-    chatid = chatid
-    message = "zzk49_bot дает в жопу"
-    
-    sendBotMessage(chatid, message)
-    
-    print("message sent to a friend")
-
-    
