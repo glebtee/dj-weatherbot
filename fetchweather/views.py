@@ -58,7 +58,7 @@ def bot(request):
     data = json.loads(jsondata)
     catdata = getCat()
 
-    print(getCat()[2])
+    print(catdata[2])
 
     if 'message' in data:
         chatid = data['message']['chat']['id']
