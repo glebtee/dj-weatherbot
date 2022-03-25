@@ -56,9 +56,7 @@ def index(request):
 def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
-    catdata = getCat()
-
-    print(catdata[0]['url'])
+    caturl = getCat()[0]['url']
 
     if 'message' in data:
         chatid = data['message']['chat']['id']
@@ -71,8 +69,10 @@ def bot(request):
 
         except:
             sendBotMessage(chatid, "nope")
+            sendBotMessage(chatid, caturl)
 
     else:
-        print("-------------->" + data)
+        print("-------------->")
+        print(data)
 
     return HttpResponse(status=200)
