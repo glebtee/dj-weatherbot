@@ -17,8 +17,7 @@ temp = ""
 def sendBotMessage(chatid, message):
     url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&parse_mode=HTML&text={}'.format(botid, chatid, message)
     m = requests.post(url)
-
-    print(m.content)
+    #print(m.content)
 
 # ask for weather update
 def getWeather(units, city):
@@ -33,14 +32,14 @@ def getWeather(units, city):
 
     return data
 
-def getCat():
+def getCatURL():
     url = 'https://api.thecatapi.com/v1/images/search'
     response = requests.get(url)
     data = json.loads(response.text)
 
     print(data)
 
-    return data
+    return data[0]['url']
 
 # index webpage
 def index(request):
@@ -56,7 +55,6 @@ def index(request):
 def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
-    caturl = getCat()[0]['url']
 
     if 'message' in data:
         chatid = data['message']['chat']['id']
@@ -64,15 +62,14 @@ def bot(request):
 
         try:
             temp = getWeather('metric', message)['main']['temp']
-            replymessage = 'Its {} degrees in {}'.format(temp, message)
-            sendBotMessage(chatid, replymessage)
+            sendBotMessage(chatid, 'Its {} degrees in {}'.format(temp, message))
 
         except:
             sendBotMessage(chatid, "nope")
-            sendBotMessage(chatid, caturl)
+            sendBotMessage(chatid, getCatURL())
 
     else:
-        print("-------------->")
+        print("----traffic other than messages---------->")
         print(data)
 
-    return HttpResponse(status=200)
+    return HttpResponse(status = 200)
