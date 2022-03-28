@@ -19,7 +19,7 @@ def sendBotMessage(chatid, message):
     m = requests.post(url)
     #print(m.content)
 
-# ask for weather update
+# get weather update
 def getWeather(units, city):
     city = city
     units = units
@@ -31,7 +31,7 @@ def getWeather(units, city):
     print(data)
 
     return data
-
+# get cat url
 def getCatURL():
     url = 'https://api.thecatapi.com/v1/images/search'
     response = requests.get(url)
@@ -55,6 +55,8 @@ def index(request):
 def bot(request):
     jsondata = request.body
     data = json.loads(jsondata)
+
+    print(data)
 
     if 'message' in data:
         chatid = data['message']['chat']['id']
