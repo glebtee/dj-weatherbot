@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Django app container to Azure App Service Container
+name: Build and deploy Django app container to Azure ACR
 
 on:
   push:
@@ -19,10 +19,11 @@ jobs:
 
     - uses: azure/docker-login@v1
       with:
+        # miusta vaihtaa ajankohtaiseks
         login-server: boatregistry.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.BOATREGISTRY }}
-
+    # miusta vaihtaa ajankohtaiseks
     - run: |
         docker build . -t boatregistry.azurecr.io/unit-weather:latest
         docker push boatregistry.azurecr.io/unit-weather:latest
@@ -36,6 +37,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
+          # miusta vaihtaa ajankohtaiseks
           app-name: 'weatherboat'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           images: 'boatregistry.azurecr.io/unit-weather:latest'

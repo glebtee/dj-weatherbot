@@ -23,5 +23,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       id: deploy-to-webapp
       with:
+        # miusta vaihtaa ajankohtaiseks
         app-name: 'glebot'
         publish-profile: ${{ secrets.GLEBOT_AZURE }}
