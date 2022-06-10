@@ -51,6 +51,8 @@ def index(request):
     return HttpResponse(responsestr)
 
 # tele webhook happens here
+# REMEMBER set webook in tele: 
+# curl -F "url=https://weatherboat.azurewebsites.net/bot" https://api.telegram.org/bot382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA/setWebhook
 @require_POST
 def bot(request):
     jsondata = request.body
