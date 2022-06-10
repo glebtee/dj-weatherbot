@@ -21,12 +21,12 @@ jobs:
       with:
         # miusta vaihtaa ajankohtaiseks
         login-server: boatregistry.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
+        username: thebotregistry
         password: ${{ secrets.BOATREGISTRY }}
     # miusta vaihtaa ajankohtaiseks
     - run: |
-        docker build . -t boatregistry.azurecr.io/unit-weather:latest
-        docker push boatregistry.azurecr.io/unit-weather:latest
+        docker build . -t boatregistry.azurecr.io/containerboat:latest
+        docker push boatregistry.azurecr.io/containerboat:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -38,6 +38,6 @@ jobs:
         id: deploy-to-webapp
         with:
           # miusta vaihtaa ajankohtaiseks
-          app-name: 'weatherboat'
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: 'boatregistry.azurecr.io/unit-weather:latest'
+          app-name: 'container-boat'
+          publish-profile: ${{ secrets.AZURE_CONTAINER_BOAT_PROFILE }}
+          images: 'thebotregistry.azurecr.io/containerboat:latest'
