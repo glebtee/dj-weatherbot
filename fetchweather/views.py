@@ -46,13 +46,13 @@ def index(request):
     city = "Helsinki"
     weather = getWeather("metric", "Helsinki")
     temp = weather['main']['temp']
-    responsestr = '<h1>{}</h1><p>ilma meillä nyt: {}</p>'.format(city, temp)
+    responsestr = '<h1>{}</h1><p>ilmat meillä nyt: {}</p>'.format(city, temp)
 
     return HttpResponse(responsestr)
 
 # tele webhook happens here
 # REMEMBER set webook in tele: 
-# curl -F "url=https://weatherboat.azurewebsites.net/bot" https://api.telegram.org/bot382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA/setWebhook
+# curl -F "url=https://weatherboat.azurewebsites.net/bot/" https://api.telegram.org/bot382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA/setWebhook
 @require_POST
 def bot(request):
     jsondata = request.body

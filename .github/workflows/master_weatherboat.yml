@@ -4,7 +4,7 @@
 
 # REMEMBER set SCM_DO_BUILD_DURING_DEPLOYMENT=true in AZ
 
-name: Build and deploy Python app to Azure Web App - weatherboat
+name: Checkout deploy Python app to Azure Web App
 
 on:
   push:
