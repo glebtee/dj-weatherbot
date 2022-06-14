@@ -24,9 +24,10 @@ jobs:
         username: thebotregistry
         password: ${{ secrets.BOATREGISTRY }}
     # miusta vaihtaa ajankohtaiseks
+    # ${{ github.sha }} necessary to deploy image actions trigger
     - run: |
-        docker build . -t boatregistry.azurecr.io/containerboat:latest
-        docker push boatregistry.azurecr.io/containerboat:latest
+        docker build . -t theboatregistry.azurecr.io/containerboat:${{ github.sha }}
+        docker push theboatregistry.azurecr.io/containerboat:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -40,4 +41,4 @@ jobs:
           # miusta vaihtaa ajankohtaiseks
           app-name: 'container-boat'
           publish-profile: ${{ secrets.AZURE_CONTAINER_BOAT_PROFILE }}
-          images: 'thebotregistry.azurecr.io/containerboat:latest'
+          images: 'thebotregistry.azurecr.io/containerboat:${{ github.sha }}'
