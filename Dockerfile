@@ -1,7 +1,7 @@
 #build stage named "build-python"
+#installing pyth dependencies
 FROM python:3.9 AS build-python
 
-#installing pyth dependencies
 WORKDIR /app
 COPY requirements.txt /app
 RUN pip3 install virtualenv
