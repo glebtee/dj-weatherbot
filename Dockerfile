@@ -1,5 +1,5 @@
-#stage to build and install packages
-FROM python:3.9 as build-python
+#build stage named "build-python"
+FROM python:3.9 AS build-python
 
 #installing pyth dependencies
 WORKDIR /app
@@ -10,6 +10,7 @@ RUN . /opt/venv/bin/activate && pip install -r requirements.txt
 COPY . /app
 
 #final image stage
+#everything that not copied left behind
 FROM nginx/unit:1.26.1-python3.9
 COPY --from=build-python /opt/venv /opt/venv
 COPY --from=build-python /app /app
