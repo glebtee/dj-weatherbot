@@ -5,8 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 from django.conf import settings
 
-weatherappid = settings.BOT
-botid = settings.WEATHER
+weatherappid = settings.WEATHER
+botid = settings.BOT
 message = ""
 chatid = ""
 city = ""
@@ -26,7 +26,7 @@ def getWeather(units, city):
     response = requests.get(url)
     data = json.loads(response.text)
 
-    print(data)
+    print(url)
 
     return data
 # get cat url
