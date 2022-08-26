@@ -1,13 +1,12 @@
-from itertools import chain
+import requests, json
 from django.shortcuts import render
 from django.http import HttpResponse
-import requests, json
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
+from django.conf import settings
 
-weatherappid = ""
-botid = ""
-
+weatherappid = settings.BOT
+botid = settings.WEATHER
 message = ""
 chatid = ""
 city = ""
@@ -17,7 +16,6 @@ temp = ""
 def sendBotMessage(chatid, message):
     url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&parse_mode=HTML&text={}'.format(botid, chatid, message)
     m = requests.post(url)
-    #print(m.content)
 
 # get weather update
 def getWeather(units, city):
@@ -45,8 +43,12 @@ def getCatURL():
 def index(request):
     city = "Helsinki"
     weather = getWeather("metric", "Helsinki")
-    temp = weather['main']['temp']
-    responsestr = '<h1>{}</h1><p>ilmat meillä nyt: {}</p>'.format(city, temp)
+
+    try:
+        temp = weather['main']['temp']
+        responsestr = '<h1>{}</h1><p>ilmat meillä nyt: {}</p>'.format(city, temp)
+    except:
+        responsestr = '<p>Säätä ei pysty hakee lol</p>'
 
     return HttpResponse(responsestr)
 
