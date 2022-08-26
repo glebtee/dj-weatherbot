@@ -5,8 +5,8 @@ import requests, json
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 
-weatherappid = "ed71a4ff62e0d8b0edffad31710b4085"
-botid = "382694174:AAHZeoMmAJQ6C5oLQfoNax11deTbSC2gKvA"
+weatherappid = ""
+botid = ""
 
 message = ""
 chatid = ""
