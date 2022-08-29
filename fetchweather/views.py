@@ -1,12 +1,12 @@
-import requests, json
+import os, requests, json
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 from django.conf import settings
 
-weatherappid = settings.WEATHER
-botid = settings.BOT
+weatherappid = os.environ['WEATHER_ID']
+botid = os.environ['BOT_ID']
 message = ""
 chatid = ""
 city = ""
@@ -14,8 +14,11 @@ temp = ""
 
 # send bot message
 def sendBotMessage(chatid, message):
-    url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&parse_mode=HTML&text={}'.format(botid, chatid, message)
-    m = requests.post(url)
+    try:
+     url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&parse_mode=HTML&text={}'.format(botid, chatid, message)
+     m = requests.post(url)
+    except:
+        print('*** cant send messages now')
 
 # get weather update
 def getWeather(units, city):
