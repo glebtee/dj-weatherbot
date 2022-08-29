@@ -33,5 +33,5 @@ jobs:
       id: deploy-to-webapp
       with:
         # miusta vaihtaa ajankohtaiseks
-        app-name: 'dj-weatherbot'
+        app-name: 'weather-bot'
         publish-profile: ${{ secrets.APP_SERVICE_SECRET }}
