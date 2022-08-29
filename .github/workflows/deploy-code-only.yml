@@ -23,7 +23,7 @@ jobs:
       env:
         BOT_SECRET: ${{ secrets.TELEGRAM_BOT_ID }}
         WEATHER_SECRET: ${{ secrets.WEATHER_API }}
-      run:
+      run: |
         touch .env 
         echo BOT="$BOT_SECRET" >> .env
         echo WEATHER="$WEATHER_SECRET" >> .env
