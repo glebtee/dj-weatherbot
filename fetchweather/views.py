@@ -48,7 +48,7 @@ def index(request):
         temp = weather['main']['temp']
         responsestr = '<h1>{}</h1><p>ilmat meillä nyt: {}</p>'.format(city, temp)
     except:
-        responsestr = '<p>Säätä ei pysty hakee lol</p>'
+        responsestr = '<p>Säätä ei pysty hakee lols</p>'
 
     return HttpResponse(responsestr)
 
