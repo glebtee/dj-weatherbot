@@ -27,6 +27,7 @@ jobs:
         touch .env 
         echo BOT="$BOT_SECRET" >> .env
         echo WEATHER="$WEATHER_SECRET" >> .env
+        ls -la
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
