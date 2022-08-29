@@ -19,16 +19,6 @@ jobs:
     - name: Checkout app code
       uses: actions/checkout@v2
 
-    - name: Add app secrets
-      env:
-        BOT_SECRET: ${{ secrets.TELEGRAM_BOT_ID }}
-        WEATHER_SECRET: ${{ secrets.WEATHER_API }}
-      run: |
-        touch .env 
-        echo BOT="$BOT_SECRET" >> .env
-        echo WEATHER="$WEATHER_SECRET" >> .env
-        ls -la
-
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       id: deploy-to-webapp
