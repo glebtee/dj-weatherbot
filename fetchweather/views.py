@@ -14,6 +14,8 @@ temp = ""
 
 # send bot message
 def sendBotMessage(chatid, message):
+    """ takes chat id and message string as parameters, sends message to telegram bot
+    """
     try:
      url = 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&parse_mode=HTML&text={}'.format(botid, chatid, message)
      m = requests.post(url)
@@ -22,6 +24,9 @@ def sendBotMessage(chatid, message):
 
 # get weather update
 def getWeather(units, city):
+    """takes temperature units and city name as parameters, sends request to openweather app,
+    returns data
+    """
     city = city
     units = units
     url = 'https://api.openweathermap.org/data/2.5/weather?q={}&units={}&appid={}'.format(city, units, weatherappid)
@@ -34,6 +39,8 @@ def getWeather(units, city):
     return data
 # get cat url
 def getCatURL():
+    """ returns random cat picture from cat api
+    """
     url = 'https://api.thecatapi.com/v1/images/search'
     response = requests.get(url)
     data = json.loads(response.text)
@@ -44,6 +51,8 @@ def getCatURL():
 
 # index webpage
 def index(request):
+    """ returns an index page with city air temperature
+    """
     city = "Helsinki"
     weather = getWeather("metric", "Helsinki")
 
@@ -55,11 +64,13 @@ def index(request):
 
     return HttpResponse(responsestr)
 
-# tele webhook happens here
 # REMEMBER set webook in tele: 
 # curl -F "url=https://weatherboat.azurewebsites.net/bot/" https://api.telegram.org/bot{botid}/setWebhook
 @require_POST
 def bot(request):
+    """ telegram webhook happens here, returns bot messages, 
+        must remember to set webhook after initial app deployment
+    """
     jsondata = request.body
     data = json.loads(jsondata)
 
