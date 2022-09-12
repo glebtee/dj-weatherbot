@@ -51,30 +51,32 @@ def getCatURL():
 
 # index webpage
 def index(request):
-    """ returns an index page with city air temperature
+    """ returns an index page with a greeting
     """
-    city = "Helsinki"
-    weather = getWeather("metric", "Helsinki")
-
-    try:
-        temp = weather['main']['temp']
-        responsestr = '<h1>{}</h1><p>ilmat meillä nyt: {}</p>'.format(city, temp)
-    except:
-        responsestr = '<p>Säätä ei pysty hakee lols</p>'
+    responsestr = '<h1>TERVATULOA!!1</h1>'
 
     return HttpResponse(responsestr)
 
 # path to city webpage
 def city(request, cityname):
-    """ returns an index page with city air temperature
+    """ returns a page with city air temperature
     """
     weather = getWeather("metric", cityname)
 
     try:
         temp = weather['main']['temp']
-        responsestr = '<h1>{}</h1><p>ilmat meillä nyt: {}</p>'.format(cityname, temp)
+        responsestr = '<h1>{}</h1><p>{}C</p>'.format(cityname, temp)
     except:
         responsestr = '<p>Säätä ei pysty hakee lols</p>'
+
+    return HttpResponse(responsestr)
+
+# path to cat webpage
+def cat(request, cityname):
+    """ returns page with a cat
+    """
+    caturl=getCatURL()
+    responsestr='<img src="{}" alt="kittycat">'.format(caturl)
 
     return HttpResponse(responsestr)
 
