@@ -78,6 +78,15 @@ def city(request, cityname):
 
     return HttpResponse(responsestr)
 
+# path to cat webpage
+def cat():
+    """ returns page with a cat
+    """
+    caturl=getCatURL()
+    responsestr='<img src="{}" alt="kittycat">'.format(caturl)
+
+    return HttpResponse(responsestr)
+
 # REMEMBER set webook in tele: 
 # curl -F "url=https://weatherboat.azurewebsites.net/bot/" https://api.telegram.org/bot{botid}/setWebhook
 @require_POST
