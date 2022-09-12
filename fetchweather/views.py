@@ -64,6 +64,20 @@ def index(request):
 
     return HttpResponse(responsestr)
 
+# path to city webpage
+def city(request, cityname):
+    """ returns an index page with city air temperature
+    """
+    weather = getWeather("metric", cityname)
+
+    try:
+        temp = weather['main']['temp']
+        responsestr = '<h1>{}</h1><p>ilmat meillä nyt: {}</p>'.format(cityname, temp)
+    except:
+        responsestr = '<p>Säätä ei pysty hakee lols</p>'
+
+    return HttpResponse(responsestr)
+
 # REMEMBER set webook in tele: 
 # curl -F "url=https://weatherboat.azurewebsites.net/bot/" https://api.telegram.org/bot{botid}/setWebhook
 @require_POST
