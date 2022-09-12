@@ -72,7 +72,7 @@ def city(request, cityname):
     return HttpResponse(responsestr)
 
 # path to cat webpage
-def cat(request, cityname):
+def cat():
     """ returns page with a cat
     """
     caturl=getCatURL()
