@@ -1,0 +1,10 @@
+---
+sourceLocationPrefix: "/Users/glebtishchenko/dj-weatherbot"
+baselineLinesOfCode: 256
+unicodeNewlines: false
+columnKind: "utf32"
+primaryLanguage: "python"
+creationMetadata:
+  sha: "afc6067b7d896d721e5b057f6c9812a6e4359457"
+  cliVersion: "2.11.5"
+  creationTime: "2022-12-12T09:28:49.085150Z"

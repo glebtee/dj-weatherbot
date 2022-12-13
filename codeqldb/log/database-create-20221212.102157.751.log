@@ -1,0 +1,184 @@
+[2022-12-12 10:21:57] This is codeql database create codeqldb --language=python
+[2022-12-12 10:21:57] Log file was started late.
+[2022-12-12 10:21:57] [PROGRESS] database create> Initializing database at /Users/glebtishchenko/dj-weatherbot/codeqldb.
+[2022-12-12 10:21:57] Running plumbing command: codeql database init --language=python --source-root=/Users/glebtishchenko/dj-weatherbot --allow-missing-source-root=false --allow-already-existing -- /Users/glebtishchenko/dj-weatherbot/codeqldb
+[2022-12-12 10:21:57] Calling plumbing command: codeql resolve languages --format=json
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from /Users/glebtishchenko/codeql-home/codeql/.codeqlmanifest.json
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/go/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/python/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/java/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/html/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/xml/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/properties/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/cpp/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/csv/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/csharp/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/javascript/codeql-extractor.yml.
+[2022-12-12 10:21:57] [DETAILS] resolve languages> Parsing /Users/glebtishchenko/codeql-home/codeql/ruby/codeql-extractor.yml.
+[2022-12-12 10:21:57] Plumbing command codeql resolve languages completed:
+                      {
+                        "extractors" : {
+                          "go" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/go"
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/python"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis.\n",
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/html"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/xml"
+                            }
+                          ],
+                          "properties" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/properties"
+                            }
+                          ],
+                          "cpp" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/cpp"
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/csv"
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction.",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "cil" : {
+                                  "title" : "Whether to enable CIL extraction.",
+                                  "description" : "A value indicating, whether CIL extraction should be enabled. The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/javascript",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "/Users/glebtishchenko/codeql-home/codeql/ruby"
+                            }
+                          ]
+                        }
+                      }
+[2022-12-12 10:21:58] [PROGRESS] database init> Calculating baseline information in /Users/glebtishchenko/dj-weatherbot
+[2022-12-12 10:21:58] Exception caught at top level: IOException while executing process with args: [/Users/glebtishchenko/codeql-home/codeql/tools/osx64/scc, --by-file, --format, json]
+                      (eventual cause: IOException "error=86, Bad CPU type in executable")
+                      com.semmle.util.process.AbstractProcessBuilder.execute(AbstractProcessBuilder.java:258)
+                      com.semmle.util.process.AbstractProcessBuilder.execute(AbstractProcessBuilder.java:198)
+                      com.semmle.cli2.database.baseline.SccBaseline.run(SccBaseline.java:59)
+                      com.semmle.cli2.database.baseline.SccBaseline.calculate(SccBaseline.java:106)
+                      com.semmle.cli2.database.InitCommand.executeSubcommand(InitCommand.java:199)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$2(SubcommandCommon.java:625)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:405)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:624)
+                      com.semmle.cli2.picocli.PlumbingRunner.run(PlumbingRunner.java:110)
+                      com.semmle.cli2.picocli.SubcommandCommon.runPlumbingInProcess(SubcommandCommon.java:188)
+                      com.semmle.cli2.database.CreateCommand.executeSubcommand(CreateCommand.java:84)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$2(SubcommandCommon.java:625)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:405)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:624)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:561)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:225)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:234)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:100)
+                      
+                       ... caused by:
+                      
+                      java.io.IOException: Cannot run program "/Users/glebtishchenko/codeql-home/codeql/tools/osx64/scc" (in directory "/Users/glebtishchenko/dj-weatherbot"): error=86, Bad CPU type in executable
+                      java.base/java.lang.ProcessBuilder.start(Unknown Source)
+                      java.base/java.lang.ProcessBuilder.start(Unknown Source)
+                      com.semmle.util.process.AbstractProcessBuilder.execute(AbstractProcessBuilder.java:231)
+                      com.semmle.util.process.AbstractProcessBuilder.execute(AbstractProcessBuilder.java:198)
+                      com.semmle.cli2.database.baseline.SccBaseline.run(SccBaseline.java:59)
+                      com.semmle.cli2.database.baseline.SccBaseline.calculate(SccBaseline.java:106)
+                      com.semmle.cli2.database.InitCommand.executeSubcommand(InitCommand.java:199)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$2(SubcommandCommon.java:625)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:405)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:624)
+                      com.semmle.cli2.picocli.PlumbingRunner.run(PlumbingRunner.java:110)
+                      com.semmle.cli2.picocli.SubcommandCommon.runPlumbingInProcess(SubcommandCommon.java:188)
+                      com.semmle.cli2.database.CreateCommand.executeSubcommand(CreateCommand.java:84)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$2(SubcommandCommon.java:625)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:405)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:624)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:561)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:225)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:234)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:100)
+                      
+                       ... caused by:
+                      
+                      java.io.IOException: error=86, Bad CPU type in executable
+                      java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+                      java.base/java.lang.ProcessImpl.<init>(Unknown Source)
+                      java.base/java.lang.ProcessImpl.start(Unknown Source)
+                      java.base/java.lang.ProcessBuilder.start(Unknown Source)
+                      java.base/java.lang.ProcessBuilder.start(Unknown Source)
+                      com.semmle.util.process.AbstractProcessBuilder.execute(AbstractProcessBuilder.java:231)
+                      com.semmle.util.process.AbstractProcessBuilder.execute(AbstractProcessBuilder.java:198)
+                      com.semmle.cli2.database.baseline.SccBaseline.run(SccBaseline.java:59)
+                      com.semmle.cli2.database.baseline.SccBaseline.calculate(SccBaseline.java:106)
+                      com.semmle.cli2.database.InitCommand.executeSubcommand(InitCommand.java:199)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$2(SubcommandCommon.java:625)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:405)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:624)
+                      com.semmle.cli2.picocli.PlumbingRunner.run(PlumbingRunner.java:110)
+                      com.semmle.cli2.picocli.SubcommandCommon.runPlumbingInProcess(SubcommandCommon.java:188)
+                      com.semmle.cli2.database.CreateCommand.executeSubcommand(CreateCommand.java:84)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$2(SubcommandCommon.java:625)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:405)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:624)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:561)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:225)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:234)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:100)

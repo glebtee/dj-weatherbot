@@ -1,0 +1,2495 @@
+{
+  "$schema" : "https://json.schemastore.org/sarif-2.1.0.json",
+  "version" : "2.1.0",
+  "runs" : [ {
+    "tool" : {
+      "driver" : {
+        "name" : "CodeQL",
+        "organization" : "GitHub",
+        "semanticVersion" : "2.11.5",
+        "notifications" : [ {
+          "id" : "py/diagnostics/extraction-warnings",
+          "name" : "py/diagnostics/extraction-warnings",
+          "shortDescription" : {
+            "text" : "Python extraction warnings"
+          },
+          "fullDescription" : {
+            "text" : "List all extraction warnings for Python files in the source code directory."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true
+          },
+          "properties" : {
+            "description" : "List all extraction warnings for Python files in the source code directory.",
+            "id" : "py/diagnostics/extraction-warnings",
+            "kind" : "diagnostic",
+            "name" : "Python extraction warnings"
+          }
+        }, {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "name" : "py/diagnostics/successfully-extracted-files",
+          "shortDescription" : {
+            "text" : "Successfully extracted Python files"
+          },
+          "fullDescription" : {
+            "text" : "Lists all Python files in the source code directory that were extracted without encountering an error."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true
+          },
+          "properties" : {
+            "tags" : [ "successfully-extracted-files" ],
+            "description" : "Lists all Python files in the source code directory that were extracted\n   without encountering an error.",
+            "id" : "py/diagnostics/successfully-extracted-files",
+            "kind" : "diagnostic",
+            "name" : "Successfully extracted Python files"
+          }
+        } ],
+        "rules" : [ {
+          "id" : "py/use-of-input",
+          "name" : "py/use-of-input",
+          "shortDescription" : {
+            "text" : "'input' function used in Python 2"
+          },
+          "fullDescription" : {
+            "text" : "The built-in function 'input' is used which, in Python 2, can allow arbitrary code to be run."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "correctness", "security/cwe/cwe-94", "security/cwe/cwe-95" ],
+            "description" : "The built-in function 'input' is used which, in Python 2, can allow arbitrary code to be run.",
+            "id" : "py/use-of-input",
+            "kind" : "problem",
+            "name" : "'input' function used in Python 2",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8",
+            "sub-severity" : "high"
+          }
+        }, {
+          "id" : "py/bind-socket-all-network-interfaces",
+          "name" : "py/bind-socket-all-network-interfaces",
+          "shortDescription" : {
+            "text" : "Binding a socket to all network interfaces"
+          },
+          "fullDescription" : {
+            "text" : "Binding a socket to all interfaces opens it up to traffic from any IPv4 address and is therefore associated with security risks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-200" ],
+            "description" : "Binding a socket to all interfaces opens it up to traffic from any IPv4 address\n and is therefore associated with security risks.",
+            "id" : "py/bind-socket-all-network-interfaces",
+            "kind" : "problem",
+            "name" : "Binding a socket to all network interfaces",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "6.5",
+            "sub-severity" : "low"
+          }
+        }, {
+          "id" : "py/incomplete-hostname-regexp",
+          "name" : "py/incomplete-hostname-regexp",
+          "shortDescription" : {
+            "text" : "Incomplete regular expression for hostnames"
+          },
+          "fullDescription" : {
+            "text" : "Matching a URL or hostname against a regular expression that contains an unescaped dot as part of the hostname might match more hostnames than expected."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "correctness", "security", "external/cwe/cwe-020" ],
+            "description" : "Matching a URL or hostname against a regular expression that contains an unescaped dot as part of the hostname might match more hostnames than expected.",
+            "id" : "py/incomplete-hostname-regexp",
+            "kind" : "problem",
+            "name" : "Incomplete regular expression for hostnames",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.8"
+          }
+        }, {
+          "id" : "py/incomplete-url-substring-sanitization",
+          "name" : "py/incomplete-url-substring-sanitization",
+          "shortDescription" : {
+            "text" : "Incomplete URL substring sanitization"
+          },
+          "fullDescription" : {
+            "text" : "Security checks on the substrings of an unparsed URL are often vulnerable to bypassing."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "correctness", "security", "external/cwe/cwe-20" ],
+            "description" : "Security checks on the substrings of an unparsed URL are often vulnerable to bypassing.",
+            "id" : "py/incomplete-url-substring-sanitization",
+            "kind" : "problem",
+            "name" : "Incomplete URL substring sanitization",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.8"
+          }
+        }, {
+          "id" : "py/overly-large-range",
+          "name" : "py/overly-large-range",
+          "shortDescription" : {
+            "text" : "Overly permissive regular expression range"
+          },
+          "fullDescription" : {
+            "text" : "Overly permissive regular expression ranges match a wider range of characters than intended. This may allow an attacker to bypass a filter or sanitizer."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "correctness", "security", "external/cwe/cwe-020" ],
+            "description" : "Overly permissive regular expression ranges match a wider range of characters than intended.\n              This may allow an attacker to bypass a filter or sanitizer.",
+            "id" : "py/overly-large-range",
+            "kind" : "problem",
+            "name" : "Overly permissive regular expression range",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "5.0"
+          }
+        }, {
+          "id" : "py/path-injection",
+          "name" : "py/path-injection",
+          "shortDescription" : {
+            "text" : "Uncontrolled data used in path expression"
+          },
+          "fullDescription" : {
+            "text" : "Accessing paths influenced by users can allow an attacker to access unexpected resources."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "correctness", "security", "external/cwe/cwe-022", "external/cwe/cwe-023", "external/cwe/cwe-036", "external/cwe/cwe-073", "external/cwe/cwe-099" ],
+            "description" : "Accessing paths influenced by users can allow an attacker to access unexpected resources.",
+            "id" : "py/path-injection",
+            "kind" : "path-problem",
+            "name" : "Uncontrolled data used in path expression",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5",
+            "sub-severity" : "high"
+          }
+        }, {
+          "id" : "py/command-line-injection",
+          "name" : "py/command-line-injection",
+          "shortDescription" : {
+            "text" : "Uncontrolled command line"
+          },
+          "fullDescription" : {
+            "text" : "Using externally controlled strings in a command line may allow a malicious user to change the meaning of the command."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "correctness", "security", "external/cwe/cwe-078", "external/cwe/cwe-088" ],
+            "description" : "Using externally controlled strings in a command line may allow a malicious\n              user to change the meaning of the command.",
+            "id" : "py/command-line-injection",
+            "kind" : "path-problem",
+            "name" : "Uncontrolled command line",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8",
+            "sub-severity" : "high"
+          }
+        }, {
+          "id" : "py/reflective-xss",
+          "name" : "py/reflective-xss",
+          "shortDescription" : {
+            "text" : "Reflected server-side cross-site scripting"
+          },
+          "fullDescription" : {
+            "text" : "Writing user input directly to a web page allows for a cross-site scripting vulnerability."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-079", "external/cwe/cwe-116" ],
+            "description" : "Writing user input directly to a web page\n              allows for a cross-site scripting vulnerability.",
+            "id" : "py/reflective-xss",
+            "kind" : "path-problem",
+            "name" : "Reflected server-side cross-site scripting",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "6.1",
+            "sub-severity" : "high"
+          }
+        }, {
+          "id" : "py/sql-injection",
+          "name" : "py/sql-injection",
+          "shortDescription" : {
+            "text" : "SQL query built from user-controlled sources"
+          },
+          "fullDescription" : {
+            "text" : "Building a SQL query from user-controlled sources is vulnerable to insertion of malicious SQL code by the user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-089" ],
+            "description" : "Building a SQL query from user-controlled sources is vulnerable to insertion of\n              malicious SQL code by the user.",
+            "id" : "py/sql-injection",
+            "kind" : "path-problem",
+            "name" : "SQL query built from user-controlled sources",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "8.8"
+          }
+        }, {
+          "id" : "py/ldap-injection",
+          "name" : "py/ldap-injection",
+          "shortDescription" : {
+            "text" : "LDAP query built from user-controlled sources"
+          },
+          "fullDescription" : {
+            "text" : "Building an LDAP query from user-controlled sources is vulnerable to insertion of malicious LDAP code by the user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-090" ],
+            "description" : "Building an LDAP query from user-controlled sources is vulnerable to insertion of\n              malicious LDAP code by the user.",
+            "id" : "py/ldap-injection",
+            "kind" : "path-problem",
+            "name" : "LDAP query built from user-controlled sources",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8"
+          }
+        }, {
+          "id" : "py/code-injection",
+          "name" : "py/code-injection",
+          "shortDescription" : {
+            "text" : "Code injection"
+          },
+          "fullDescription" : {
+            "text" : "Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-094", "external/cwe/cwe-095", "external/cwe/cwe-116" ],
+            "description" : "Interpreting unsanitized user input as code allows a malicious user to perform arbitrary\n              code execution.",
+            "id" : "py/code-injection",
+            "kind" : "path-problem",
+            "name" : "Code injection",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.3",
+            "sub-severity" : "high"
+          }
+        }, {
+          "id" : "py/bad-tag-filter",
+          "name" : "py/bad-tag-filter",
+          "shortDescription" : {
+            "text" : "Bad HTML filtering regexp"
+          },
+          "fullDescription" : {
+            "text" : "Matching HTML tags using regular expressions is hard to do right, and can easily lead to security issues."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "correctness", "security", "external/cwe/cwe-116", "external/cwe/cwe-020", "external/cwe/cwe-185", "external/cwe/cwe-186" ],
+            "description" : "Matching HTML tags using regular expressions is hard to do right, and can easily lead to security issues.",
+            "id" : "py/bad-tag-filter",
+            "kind" : "problem",
+            "name" : "Bad HTML filtering regexp",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.8"
+          }
+        }, {
+          "id" : "py/stack-trace-exposure",
+          "name" : "py/stack-trace-exposure",
+          "shortDescription" : {
+            "text" : "Information exposure through an exception"
+          },
+          "fullDescription" : {
+            "text" : "Leaking information about an exception, such as messages and stack traces, to an external user can expose implementation details that are useful to an attacker for developing a subsequent exploit."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-209", "external/cwe/cwe-497" ],
+            "description" : "Leaking information about an exception, such as messages and stack traces, to an\n              external user can expose implementation details that are useful to an attacker for\n              developing a subsequent exploit.",
+            "id" : "py/stack-trace-exposure",
+            "kind" : "path-problem",
+            "name" : "Information exposure through an exception",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "5.4"
+          }
+        }, {
+          "id" : "py/flask-debug",
+          "name" : "py/flask-debug",
+          "shortDescription" : {
+            "text" : "Flask app is run in debug mode"
+          },
+          "fullDescription" : {
+            "text" : "Running a Flask app in debug mode may allow an attacker to run arbitrary code through the Werkzeug debugger."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-215", "external/cwe/cwe-489" ],
+            "description" : "Running a Flask app in debug mode may allow an attacker to run arbitrary code through the Werkzeug debugger.",
+            "id" : "py/flask-debug",
+            "kind" : "problem",
+            "name" : "Flask app is run in debug mode",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/pam-auth-bypass",
+          "name" : "py/pam-auth-bypass",
+          "shortDescription" : {
+            "text" : "PAM authorization bypass due to incorrect usage"
+          },
+          "fullDescription" : {
+            "text" : "Not using `pam_acct_mgmt` after `pam_authenticate` to check the validity of a login can lead to authorization bypass."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-285" ],
+            "description" : "Not using `pam_acct_mgmt` after `pam_authenticate` to check the validity of a login can lead to authorization bypass.",
+            "id" : "py/pam-auth-bypass",
+            "kind" : "path-problem",
+            "name" : "PAM authorization bypass due to incorrect usage",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "8.1"
+          }
+        }, {
+          "id" : "py/paramiko-missing-host-key-validation",
+          "name" : "py/paramiko-missing-host-key-validation",
+          "shortDescription" : {
+            "text" : "Accepting unknown SSH host keys when using Paramiko"
+          },
+          "fullDescription" : {
+            "text" : "Accepting unknown host keys can allow man-in-the-middle attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-295" ],
+            "description" : "Accepting unknown host keys can allow man-in-the-middle attacks.",
+            "id" : "py/paramiko-missing-host-key-validation",
+            "kind" : "problem",
+            "name" : "Accepting unknown SSH host keys when using Paramiko",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/clear-text-logging-sensitive-data",
+          "name" : "py/clear-text-logging-sensitive-data",
+          "shortDescription" : {
+            "text" : "Clear-text logging of sensitive information"
+          },
+          "fullDescription" : {
+            "text" : "Logging sensitive information without encryption or hashing can expose it to an attacker."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-312", "external/cwe/cwe-359", "external/cwe/cwe-532" ],
+            "description" : "Logging sensitive information without encryption or hashing can\n              expose it to an attacker.",
+            "id" : "py/clear-text-logging-sensitive-data",
+            "kind" : "path-problem",
+            "name" : "Clear-text logging of sensitive information",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/clear-text-storage-sensitive-data",
+          "name" : "py/clear-text-storage-sensitive-data",
+          "shortDescription" : {
+            "text" : "Clear-text storage of sensitive information"
+          },
+          "fullDescription" : {
+            "text" : "Sensitive information stored without encryption or hashing can expose it to an attacker."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-312", "external/cwe/cwe-315", "external/cwe/cwe-359" ],
+            "description" : "Sensitive information stored without encryption or hashing can expose it to an\n              attacker.",
+            "id" : "py/clear-text-storage-sensitive-data",
+            "kind" : "path-problem",
+            "name" : "Clear-text storage of sensitive information",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/weak-crypto-key",
+          "name" : "py/weak-crypto-key",
+          "shortDescription" : {
+            "text" : "Use of weak cryptographic key"
+          },
+          "fullDescription" : {
+            "text" : "Use of a cryptographic key that is too small may allow the encryption to be broken."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-326" ],
+            "description" : "Use of a cryptographic key that is too small may allow the encryption to be broken.",
+            "id" : "py/weak-crypto-key",
+            "kind" : "problem",
+            "name" : "Use of weak cryptographic key",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/weak-cryptographic-algorithm",
+          "name" : "py/weak-cryptographic-algorithm",
+          "shortDescription" : {
+            "text" : "Use of a broken or weak cryptographic algorithm"
+          },
+          "fullDescription" : {
+            "text" : "Using broken or weak cryptographic algorithms can compromise security."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-327" ],
+            "description" : "Using broken or weak cryptographic algorithms can compromise security.",
+            "id" : "py/weak-cryptographic-algorithm",
+            "kind" : "problem",
+            "name" : "Use of a broken or weak cryptographic algorithm",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/insecure-default-protocol",
+          "name" : "py/insecure-default-protocol",
+          "shortDescription" : {
+            "text" : "Default version of SSL/TLS may be insecure"
+          },
+          "fullDescription" : {
+            "text" : "Leaving the SSL/TLS version unspecified may result in an insecure default protocol being used."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-327" ],
+            "description" : "Leaving the SSL/TLS version unspecified may result in an insecure\n              default protocol being used.",
+            "id" : "py/insecure-default-protocol",
+            "kind" : "problem",
+            "name" : "Default version of SSL/TLS may be insecure",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/insecure-protocol",
+          "name" : "py/insecure-protocol",
+          "shortDescription" : {
+            "text" : "Use of insecure SSL/TLS version"
+          },
+          "fullDescription" : {
+            "text" : "Using an insecure SSL/TLS version may leave the connection vulnerable to attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-327" ],
+            "description" : "Using an insecure SSL/TLS version may leave the connection vulnerable to attacks.",
+            "id" : "py/insecure-protocol",
+            "kind" : "problem",
+            "name" : "Use of insecure SSL/TLS version",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/weak-sensitive-data-hashing",
+          "name" : "py/weak-sensitive-data-hashing",
+          "shortDescription" : {
+            "text" : "Use of a broken or weak cryptographic hashing algorithm on sensitive data"
+          },
+          "fullDescription" : {
+            "text" : "Using broken or weak cryptographic hashing algorithms can compromise security."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-327", "external/cwe/cwe-328", "external/cwe/cwe-916" ],
+            "description" : "Using broken or weak cryptographic hashing algorithms can compromise security.",
+            "id" : "py/weak-sensitive-data-hashing",
+            "kind" : "path-problem",
+            "name" : "Use of a broken or weak cryptographic hashing algorithm on sensitive data",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/csrf-protection-disabled",
+          "name" : "py/csrf-protection-disabled",
+          "shortDescription" : {
+            "text" : "CSRF protection weakened or disabled"
+          },
+          "fullDescription" : {
+            "text" : "Disabling or weakening CSRF protection may make the application vulnerable to a Cross-Site Request Forgery (CSRF) attack."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-352" ],
+            "description" : "Disabling or weakening CSRF protection may make the application\n              vulnerable to a Cross-Site Request Forgery (CSRF) attack.",
+            "id" : "py/csrf-protection-disabled",
+            "kind" : "problem",
+            "name" : "CSRF protection weakened or disabled",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "8.8"
+          }
+        }, {
+          "id" : "py/insecure-temporary-file",
+          "name" : "py/insecure-temporary-file",
+          "shortDescription" : {
+            "text" : "Insecure temporary file"
+          },
+          "fullDescription" : {
+            "text" : "Creating a temporary file using this method may be insecure."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "external/cwe/cwe-377", "security" ],
+            "description" : "Creating a temporary file using this method may be insecure.",
+            "id" : "py/insecure-temporary-file",
+            "kind" : "problem",
+            "name" : "Insecure temporary file",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.0",
+            "sub-severity" : "high"
+          }
+        }, {
+          "id" : "py/unsafe-deserialization",
+          "name" : "py/unsafe-deserialization",
+          "shortDescription" : {
+            "text" : "Deserializing untrusted input"
+          },
+          "fullDescription" : {
+            "text" : "Deserializing user-controlled data may allow attackers to execute arbitrary code."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "external/cwe/cwe-502", "security", "serialization" ],
+            "description" : "Deserializing user-controlled data may allow attackers to execute arbitrary code.",
+            "id" : "py/unsafe-deserialization",
+            "kind" : "path-problem",
+            "name" : "Deserializing untrusted input",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8",
+            "sub-severity" : "high"
+          }
+        }, {
+          "id" : "py/url-redirection",
+          "name" : "py/url-redirection",
+          "shortDescription" : {
+            "text" : "URL redirection from remote source"
+          },
+          "fullDescription" : {
+            "text" : "URL redirection based on unvalidated user input may cause redirection to malicious web sites."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-601" ],
+            "description" : "URL redirection based on unvalidated user input\n              may cause redirection to malicious web sites.",
+            "id" : "py/url-redirection",
+            "kind" : "path-problem",
+            "name" : "URL redirection from remote source",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "6.1",
+            "sub-severity" : "low"
+          }
+        }, {
+          "id" : "py/xxe",
+          "name" : "py/xxe",
+          "shortDescription" : {
+            "text" : "XML external entity expansion"
+          },
+          "fullDescription" : {
+            "text" : "Parsing user input as an XML document with external entity expansion is vulnerable to XXE attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-611", "external/cwe/cwe-827" ],
+            "description" : "Parsing user input as an XML document with external\n              entity expansion is vulnerable to XXE attacks.",
+            "id" : "py/xxe",
+            "kind" : "path-problem",
+            "name" : "XML external entity expansion",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.1"
+          }
+        }, {
+          "id" : "py/xpath-injection",
+          "name" : "py/xpath-injection",
+          "shortDescription" : {
+            "text" : "XPath query built from user-controlled sources"
+          },
+          "fullDescription" : {
+            "text" : "Building a XPath query from user-controlled sources is vulnerable to insertion of malicious Xpath code by the user."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-643" ],
+            "description" : "Building a XPath query from user-controlled sources is vulnerable to insertion of\n              malicious Xpath code by the user.",
+            "id" : "py/xpath-injection",
+            "kind" : "path-problem",
+            "name" : "XPath query built from user-controlled sources",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.8"
+          }
+        }, {
+          "id" : "py/polynomial-redos",
+          "name" : "py/polynomial-redos",
+          "shortDescription" : {
+            "text" : "Polynomial regular expression used on uncontrolled data"
+          },
+          "fullDescription" : {
+            "text" : "A regular expression that can require polynomial time to match may be vulnerable to denial-of-service attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-1333", "external/cwe/cwe-730", "external/cwe/cwe-400" ],
+            "description" : "A regular expression that can require polynomial time\n              to match may be vulnerable to denial-of-service attacks.",
+            "id" : "py/polynomial-redos",
+            "kind" : "path-problem",
+            "name" : "Polynomial regular expression used on uncontrolled data",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/redos",
+          "name" : "py/redos",
+          "shortDescription" : {
+            "text" : "Inefficient regular expression"
+          },
+          "fullDescription" : {
+            "text" : "A regular expression that requires exponential time to match certain inputs can be a performance bottleneck, and may be vulnerable to denial-of-service attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-1333", "external/cwe/cwe-730", "external/cwe/cwe-400" ],
+            "description" : "A regular expression that requires exponential time to match certain inputs\n              can be a performance bottleneck, and may be vulnerable to denial-of-service\n              attacks.",
+            "id" : "py/redos",
+            "kind" : "problem",
+            "name" : "Inefficient regular expression",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/regex-injection",
+          "name" : "py/regex-injection",
+          "shortDescription" : {
+            "text" : "Regular expression injection"
+          },
+          "fullDescription" : {
+            "text" : "User input should not be used in regular expressions without first being escaped, otherwise a malicious user may be able to inject an expression that could require exponential time on certain inputs."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-730", "external/cwe/cwe-400" ],
+            "description" : "User input should not be used in regular expressions without first being escaped,\n              otherwise a malicious user may be able to inject an expression that could require\n              exponential time on certain inputs.",
+            "id" : "py/regex-injection",
+            "kind" : "path-problem",
+            "name" : "Regular expression injection",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/xml-bomb",
+          "name" : "py/xml-bomb",
+          "shortDescription" : {
+            "text" : "XML internal entity expansion"
+          },
+          "fullDescription" : {
+            "text" : "Parsing user input as an XML document with arbitrary internal entity expansion is vulnerable to denial-of-service attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "warning"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-776", "external/cwe/cwe-400" ],
+            "description" : "Parsing user input as an XML document with arbitrary internal\n              entity expansion is vulnerable to denial-of-service attacks.",
+            "id" : "py/xml-bomb",
+            "kind" : "path-problem",
+            "name" : "XML internal entity expansion",
+            "precision" : "high",
+            "problem.severity" : "warning",
+            "security-severity" : "7.5"
+          }
+        }, {
+          "id" : "py/full-ssrf",
+          "name" : "py/full-ssrf",
+          "shortDescription" : {
+            "text" : "Full server-side request forgery"
+          },
+          "fullDescription" : {
+            "text" : "Making a network request to a URL that is fully user-controlled allows for request forgery attacks."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true,
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-918" ],
+            "description" : "Making a network request to a URL that is fully user-controlled allows for request forgery attacks.",
+            "id" : "py/full-ssrf",
+            "kind" : "path-problem",
+            "name" : "Full server-side request forgery",
+            "precision" : "high",
+            "problem.severity" : "error",
+            "security-severity" : "9.1"
+          }
+        }, {
+          "id" : "py/summary/lines-of-code",
+          "name" : "py/summary/lines-of-code",
+          "shortDescription" : {
+            "text" : "Total lines of Python code in the database"
+          },
+          "fullDescription" : {
+            "text" : "The total number of lines of Python code across all files, including external libraries and auto-generated files. This is a useful metric of the size of a database. This query counts the lines of code, excluding whitespace or comments."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true
+          },
+          "properties" : {
+            "tags" : [ "summary" ],
+            "description" : "The total number of lines of Python code across all files, including\n   external libraries and auto-generated files. This is a useful metric of the size of a\n   database. This query counts the lines of code, excluding whitespace or comments.",
+            "id" : "py/summary/lines-of-code",
+            "kind" : "metric",
+            "name" : "Total lines of Python code in the database"
+          }
+        }, {
+          "id" : "py/summary/lines-of-user-code",
+          "name" : "py/summary/lines-of-user-code",
+          "shortDescription" : {
+            "text" : "Total lines of user written Python code in the database"
+          },
+          "fullDescription" : {
+            "text" : "The total number of lines of Python code from the source code directory, excluding auto-generated files. This query counts the lines of code, excluding whitespace or comments. Note: If external libraries are included in the codebase either in a checked-in virtual environment or as vendored code, that will currently be counted as user written code."
+          },
+          "defaultConfiguration" : {
+            "enabled" : true
+          },
+          "properties" : {
+            "tags" : [ "summary", "lines-of-code" ],
+            "description" : "The total number of lines of Python code from the source code directory,\n   excluding auto-generated files. This query counts the lines of code, excluding\n   whitespace or comments. Note: If external libraries are included in the codebase\n   either in a checked-in virtual environment or as vendored code, that will currently\n   be counted as user written code.",
+            "id" : "py/summary/lines-of-user-code",
+            "kind" : "metric",
+            "name" : "Total lines of user written Python code in the database"
+          }
+        } ]
+      },
+      "extensions" : [ {
+        "name" : "codeql/swift-all",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/swift/ql/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/swift/ql/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-examples",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/examples/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/examples/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-queries",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/go-examples",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/examples/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/examples/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/cpp-all",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/go-all",
+        "semanticVersion" : "0.3.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "legacy-libraries-cpp",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/cpp/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/cpp/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql-swift-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/swift/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/swift/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "integration-tests-swift",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/swift/integration-tests/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/swift/integration-tests/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/csharp-solorigate-all",
+        "semanticVersion" : "1.3.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/campaigns/Solorigate/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/campaigns/Solorigate/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql-csharp-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/java-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-experimental-atm-lib",
+        "semanticVersion" : "0.4.4+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/experimental/adaptivethreatmodeling/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/experimental/adaptivethreatmodeling/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql-csharp-consistency-queries",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/consistency-queries/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/consistency-queries/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "legacy-libraries-python",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/python/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/python/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/csharp-queries",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/csharp-solorigate-queries",
+        "semanticVersion" : "1.3.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/campaigns/Solorigate/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/campaigns/Solorigate/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "legacy-libraries-go",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/config/legacy-support/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/config/legacy-support/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ruby-all",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ql",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ql/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ql/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/java-queries",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql-java-consistency-queries",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/consistency-queries/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/consistency-queries/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-experimental-atm-queries",
+        "semanticVersion" : "0.4.4+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/experimental/adaptivethreatmodeling/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/experimental/adaptivethreatmodeling/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/regex",
+        "semanticVersion" : "0.0.3-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/regex/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/regex/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/java-all",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ruby-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/cpp-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/python-queries",
+        "semanticVersion" : "0.5.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/csharp-all",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/python-examples",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/examples/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/examples/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ssa",
+        "semanticVersion" : "0.0.7-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/ssa/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/ssa/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "legacy-upgrades",
+        "semanticVersion" : "0.0.0",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql/legacy-upgrades/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql/legacy-upgrades/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-all",
+        "semanticVersion" : "0.3.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ql-consistency-queries",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ql/ql/consistency-queries/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ql/ql/consistency-queries/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/typetracking",
+        "semanticVersion" : "0.0.1-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/typetracking/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/typetracking/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/suite-helpers",
+        "semanticVersion" : "0.3.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/suite-helpers/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/suite-helpers/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/cpp-tests-cwe-190-tainted",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/test/query-tests/Security/CWE/CWE-190/semmle/tainted/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/test/query-tests/Security/CWE/CWE-190/semmle/tainted/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/python-consistency-queries",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/consistency-queries/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/consistency-queries/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ql-examples",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ql/ql/examples/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ql/ql/examples/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/python-all",
+        "semanticVersion" : "0.6.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/lib/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/lib/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "legacy-libraries-csharp",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/csharp/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/csharp/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ruby-examples",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/examples/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/examples/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-experimental-atm-model-building",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/experimental/adaptivethreatmodeling/modelbuilding/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/experimental/adaptivethreatmodeling/modelbuilding/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/cpp-queries",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/swift-queries",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/swift/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/swift/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "legacy-libraries-javascript",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/javascript/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/javascript/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/typos",
+        "semanticVersion" : "0.0.7-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/typos/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/typos/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/csharp-examples",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/examples/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/examples/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ql-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ql/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ql/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/go-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/go-queries",
+        "semanticVersion" : "0.3.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/go/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ruby-queries",
+        "semanticVersion" : "0.4.6-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/src/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/src/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/ruby-consistency-queries",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/consistency-queries/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/ruby/ql/consistency-queries/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/java-examples",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/examples/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/java/ql/examples/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "csharp-solorigate-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/campaigns/Solorigate/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/csharp/ql/campaigns/Solorigate/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/javascript-experimental-atm-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/experimental/adaptivethreatmodeling/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/javascript/ql/experimental/adaptivethreatmodeling/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/util",
+        "semanticVersion" : "0.0.1-dev+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/util/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/shared/util/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "legacy-libraries-java",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/java/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/misc/legacy-support/java/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/python-tests",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/test/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/python/ql/test/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      }, {
+        "name" : "codeql/cpp-examples",
+        "semanticVersion" : "0.0.0+e0f1b384398234351ea5e66b9d2e6f4f0dee20f3",
+        "locations" : [ {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/examples/",
+          "description" : {
+            "text" : "The QL pack root directory."
+          }
+        }, {
+          "uri" : "file:///Users/glebtishchenko/codeql-home/codeql-repo/cpp/ql/examples/qlpack.yml",
+          "description" : {
+            "text" : "The QL pack definition file."
+          }
+        } ]
+      } ]
+    },
+    "invocations" : [ {
+      "toolExecutionNotifications" : [ {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "weatherbot/__init__.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 2
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "manage.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 3
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "fetchweather/migrations/__init__.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 4
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "fetchweather/__init__.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 5
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "fetchweather/apps.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 6
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "weatherbot/asgi.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 7
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "fetchweather/tests.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 8
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "weatherbot/wsgi.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 9
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "fetchweather/admin.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 10
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "weatherbot/test_hub.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 11
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "fetchweather/models.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 12
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "fetchweather/urls.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 13
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "weatherbot/urls.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 14
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "weatherbot/settings.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 1
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      }, {
+        "locations" : [ {
+          "physicalLocation" : {
+            "artifactLocation" : {
+              "uri" : "fetchweather/views.py",
+              "uriBaseId" : "%SRCROOT%",
+              "index" : 0
+            }
+          }
+        } ],
+        "message" : {
+          "text" : ""
+        },
+        "level" : "none",
+        "descriptor" : {
+          "id" : "py/diagnostics/successfully-extracted-files",
+          "index" : 1
+        },
+        "properties" : {
+          "formattedMessage" : {
+            "text" : ""
+          },
+          "relatedLocations" : [ ]
+        }
+      } ],
+      "executionSuccessful" : true
+    } ],
+    "artifacts" : [ {
+      "location" : {
+        "uri" : "fetchweather/views.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 0
+      }
+    }, {
+      "location" : {
+        "uri" : "weatherbot/settings.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 1
+      }
+    }, {
+      "location" : {
+        "uri" : "weatherbot/__init__.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 2
+      }
+    }, {
+      "location" : {
+        "uri" : "manage.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 3
+      }
+    }, {
+      "location" : {
+        "uri" : "fetchweather/migrations/__init__.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 4
+      }
+    }, {
+      "location" : {
+        "uri" : "fetchweather/__init__.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 5
+      }
+    }, {
+      "location" : {
+        "uri" : "fetchweather/apps.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 6
+      }
+    }, {
+      "location" : {
+        "uri" : "weatherbot/asgi.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 7
+      }
+    }, {
+      "location" : {
+        "uri" : "fetchweather/tests.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 8
+      }
+    }, {
+      "location" : {
+        "uri" : "weatherbot/wsgi.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 9
+      }
+    }, {
+      "location" : {
+        "uri" : "fetchweather/admin.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 10
+      }
+    }, {
+      "location" : {
+        "uri" : "weatherbot/test_hub.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 11
+      }
+    }, {
+      "location" : {
+        "uri" : "fetchweather/models.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 12
+      }
+    }, {
+      "location" : {
+        "uri" : "fetchweather/urls.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 13
+      }
+    }, {
+      "location" : {
+        "uri" : "weatherbot/urls.py",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 14
+      }
+    } ],
+    "results" : [ {
+      "ruleId" : "py/reflective-xss",
+      "ruleIndex" : 7,
+      "rule" : {
+        "id" : "py/reflective-xss",
+        "index" : 7
+      },
+      "message" : {
+        "text" : "Cross-site scripting vulnerability due to a [user-provided value](1)."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "fetchweather/views.py",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 72,
+            "startColumn" : 25,
+            "endColumn" : 36
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "c78a92e9a83ce0a1:1",
+        "primaryLocationStartColumnFingerprint" : "20"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 61,
+                  "startColumn" : 19,
+                  "endColumn" : 27
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for cityname"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 72,
+                  "startColumn" : 25,
+                  "endColumn" : 36
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for responsestr"
+              }
+            }
+          } ]
+        } ]
+      }, {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 61,
+                  "startColumn" : 19,
+                  "endColumn" : 27
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for cityname"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 64,
+                  "startColumn" : 36,
+                  "endColumn" : 44
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for cityname"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 26,
+                  "startColumn" : 23,
+                  "endColumn" : 27
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for city"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 35,
+                  "startColumn" : 23,
+                  "endColumn" : 36
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for Attribute"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 39,
+                  "startColumn" : 12,
+                  "endColumn" : 16
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for data"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 64,
+                  "startColumn" : 15,
+                  "endColumn" : 45
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for getWeather()"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 67,
+                  "startColumn" : 16,
+                  "endColumn" : 31
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for Subscript"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 67,
+                  "startColumn" : 16,
+                  "endColumn" : 39
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for Subscript"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "fetchweather/views.py",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 72,
+                  "startColumn" : 25,
+                  "endColumn" : 36
+                }
+              },
+              "message" : {
+                "text" : "ControlFlowNode for responsestr"
+              }
+            }
+          } ]
+        } ]
+      } ],
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "fetchweather/views.py",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 61,
+            "startColumn" : 19,
+            "endColumn" : 27
+          }
+        },
+        "message" : {
+          "text" : "user-provided value"
+        }
+      } ]
+    }, {
+      "ruleId" : "py/csrf-protection-disabled",
+      "ruleIndex" : 23,
+      "rule" : {
+        "id" : "py/csrf-protection-disabled",
+        "index" : 23
+      },
+      "message" : {
+        "text" : "Potential CSRF vulnerability due to forgery protection being disabled or weakened."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "weatherbot/settings.py",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 43,
+            "startColumn" : 14,
+            "endLine" : 51,
+            "endColumn" : 2
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "921d8e469fe6c09d:1",
+        "primaryLocationStartColumnFingerprint" : "13"
+      }
+    } ],
+    "columnKind" : "unicodeCodePoints",
+    "properties" : {
+      "metricResults" : [ {
+        "rule" : {
+          "id" : "py/summary/lines-of-code",
+          "index" : 34
+        },
+        "ruleId" : "py/summary/lines-of-code",
+        "ruleIndex" : 34,
+        "value" : 100074
+      }, {
+        "rule" : {
+          "id" : "py/summary/lines-of-user-code",
+          "index" : 35
+        },
+        "ruleId" : "py/summary/lines-of-user-code",
+        "ruleIndex" : 35,
+        "value" : 196
+      } ],
+      "semmle.formatSpecifier" : "sarif-latest"
+    }
+  } ]
+}
