@@ -4,3 +4,4 @@ __pycache__
 azure-pipelines.yml
 .venv
 .env
+codeqldb
